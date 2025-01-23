@@ -167,7 +167,7 @@ El Apache Exporter recopila métricas del servidor web Apache, como tráfico, so
 4. Configura Prometheus para recopilar las métricas:
    ```yaml
    scrape_configs:
-     - job_name: 'prometheus-apache_exporter'
+     - job_name: 'prometheus_apache_exporter'
        static_configs:
          - targets: ['localhost:9117']
    ```
