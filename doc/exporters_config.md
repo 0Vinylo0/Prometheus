@@ -164,14 +164,10 @@ El Apache Exporter recopila métricas del servidor web Apache, como tráfico, so
      sudo a2enmod status
      sudo systemctl restart apache2
      ```
-4. Configura el Apache Exporter para apuntar al endpoint `server-status`:
-   ```bash
-   apache_exporter -scrape_uri=http://localhost/server-status?auto
-   ```
-5. Configura Prometheus para recopilar las métricas:
+4. Configura Prometheus para recopilar las métricas:
    ```yaml
    scrape_configs:
-     - job_name: 'apache_exporter'
+     - job_name: 'prometheus-apache_exporter'
        static_configs:
          - targets: ['localhost:9117']
    ```
