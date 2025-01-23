@@ -3,6 +3,8 @@
 ## Introducción
 Esta es una guía completa para la instalación y configuración de Prometheus y Grafana en sistemas Linux. El objetivo es ayudar a implementar estas herramientas de monitoreo y visualización, configurar alertas, e integrar exporters.
 
+
+
 ## Contenidos
 1. [Instalación de Prometheus](doc/prometheus_install.md)
 2. [Instalación de Grafana](doc/grafana_install.md)
