@@ -134,6 +134,51 @@ Este exporter recopila métricas de bases de datos PostgreSQL.
    postgres_exporter
    ```
 
+### Apache Exporter
+El Apache Exporter recopila métricas del servidor web Apache, como tráfico, solicitudes activas y estado de los workers.
+
+1. Verifica si el exporter está disponible en los repositorios:
+   ```bash
+   sudo apt search prometheus-apache-exporter
+   ```
+2. Si no está disponible, instala manualmente:
+   ```bash
+   wget https://github.com/Lusitaniae/apache_exporter/releases/download/<version>/apache_exporter-<version>.linux-amd64.tar.gz
+   tar -xvzf apache_exporter-<version>.linux-amd64.tar.gz
+   sudo mv apache_exporter-<version>.linux-amd64/apache_exporter /usr/local/bin/
+   ```
+3. Configura el módulo de estado en Apache:
+   - Edita el archivo de configuración de Apache:
+     ```bash
+     sudo nano /etc/apache2/mods-enabled/status.conf
+     ```
+   - Asegúrate de que la configuración permita el acceso desde localhost:
+     ```apache
+     <Location /server-status>
+         SetHandler server-status
+         Require local
+     </Location>
+     ```
+   - Habilita el módulo de estado si no lo está:
+     ```bash
+     sudo a2enmod status
+     sudo systemctl restart apache2
+     ```
+4. Configura el Apache Exporter para apuntar al endpoint `server-status`:
+   ```bash
+   apache_exporter -scrape_uri=http://localhost/server-status?auto
+   ```
+5. Configura Prometheus para recopilar las métricas:
+   ```yaml
+   scrape_configs:
+     - job_name: 'apache_exporter'
+       static_configs:
+         - targets: ['localhost:9117']
+   ```
+6. Reinicia Prometheus:
+   ```bash
+   sudo systemctl restart prometheus
+   ```
 ---
 
 ## Conclusión
