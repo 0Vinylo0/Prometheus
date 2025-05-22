@@ -2,8 +2,8 @@
 
 Esta es una guía completa para la instalación y configuración de Prometheus y Grafana en sistemas Linux. El objetivo es ayudar a implementar estas herramientas de monitoreo y visualización, configurar alertas, e integrar exporters.
 
-- [Auto instal de Prometheus y Grafana](install_node_exporter_temp.sh)
-- [Auto instal de Node_expoert com metricas para temperatura de CPU ](install_prometheus_grafana.sh)
+- [Auto instal de Prometheus y Grafana](install_prometheus_grafana.sh)
+- [Auto instal de Node_expoert com metricas para temperatura de CPU ](install_node_exporter_temp.sh)
 
 ## Contenidos
 
